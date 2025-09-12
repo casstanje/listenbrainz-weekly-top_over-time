@@ -1,42 +1,19 @@
-# listenbrainz-export-importer
-A python script to import your exported listenbrainz data, for example to make it easier to remove multiple listens by just exporting and deleting the data, editing the json files, and then reimporting
-
-NOTE: This does NOT import loved tracks. Might add it later, but right now, it doesn't
+# listenbrainz-weekly-tops_over_time
+A python script to get your top weekly artist from a specified time period
 ## Dependencies
-- Python
-    - [liblistenbrainz](https://github.com/metabrainz/liblistenbrainz)
-    - [validators](https://pypi.org/project/validators/)
-    - [pandas](https://pandas.pydata.org/)
+- Python 3.7 >
+- [liblistenbrainz](https://github.com/metabrainz/liblistenbrainz)
 ## Usage
 ```
-$ python listenbrainz-importer.py -h
-usage: listenbrainz-importer [-h] --token TOKEN exportPath
-
-positional arguments:
-  exportPath     path to the unzipped export folder from listenbrainz
+$ python listenbrainz-weekly-tops.py -h
+usage: listenbrainz-weekly-tops [-h] --token TOKEN --username USERNAME [--top_x TOPX] [--start_date STARTDATE] [--end_date ENDDATE]
 
 options:
-  -h, --help     show this help message and exit
-  --token TOKEN  listenbrainz token
+  -h, --help            show this help message and exit
+  --token TOKEN         listenbrainz user token token (get yours from https://listenbrainz.org/profile/)
+  --username USERNAME   the username of the user whose data you'd like to fetch
+  --top_x TOPX          Top X Artists in week. Default is 1
+  --start_date STARTDATE the ISO date (dd-mm-yyyy) to start from. Will "round" to closest start of week. Defaults to a year ago
+  --end_date ENDDATE    the ISO date (dd-mm-yyyy) to end at. Will "round" to closest end of week. Defaults to now
 ```
 You can get your listenbrainz token from [here](https://listenbrainz.org/profile)
-
-The export folder should look like this:
-```
-listenbrainz_user_id
-    ├── feedback.jsonl
-    ├── listens
-    │   ├── year
-    │   │   ├── index.jsonl
-    │   │   ├── index.jsonl
-    │   │   ├── index.jsonl
-    │   │   └── index.jsonl
-    │   └── year
-    │       ├── index.jsonl
-    │       ├── index.jsonl
-    │       ├── index.jsonl
-    │       ├── index.jsonl
-    │       ├── index.jsonl
-    │       └── ...
-    └── user.json
-```
