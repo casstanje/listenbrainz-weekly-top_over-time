@@ -1,5 +1,5 @@
 # listenbrainz-weekly-tops_over_time
-A python script to get your top weekly artist from a specified time period
+A python script to get the amount of times artists have been in your weekly top from a specified amount of times
 ## Dependencies
 - Python 3.7 >
 - [liblistenbrainz](https://github.com/metabrainz/liblistenbrainz)
